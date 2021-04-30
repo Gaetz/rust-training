@@ -1,0 +1,2 @@
+# rust-training
+Trying rust

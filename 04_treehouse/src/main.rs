@@ -53,7 +53,7 @@ fn main() {
     let mut visitors = vec![
         Visitor::new("fred", VisitorAction::Accept, 40),
         Visitor::new("manu", VisitorAction::AcceptWithNote { note: String::from("Hello Manu, thanks for the aperitives") }, 30),
-        Visitor::new("lionel", VisitorAction::Accept, 48),
+        Visitor::new("sylvain", VisitorAction::Accept, 48),
         Visitor::new("gaetan", VisitorAction::Accept, 35),
         Visitor::new("eric zemmour", VisitorAction::Refuse, 50)
     ];

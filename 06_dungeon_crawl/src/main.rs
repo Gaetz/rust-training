@@ -1,19 +1,38 @@
 #![warn(clippy::all, clippy::pedantic)]
-use bracket_lib::prelude::*;
 
-struct State {}
+mod map;
+
+mod prelude {
+    pub use bracket_lib::prelude::*;
+    pub const SCREEN_WIDTH: i32 = 80;
+    pub const SCREEN_HEIGHT: i32 = 50;
+    pub use crate::map::*;
+}
+
+use prelude::*;
+
+struct State {
+    map: Map,
+}
 
 impl GameState for State {
     fn tick(&mut self, ctx: &mut BTerm) {
         ctx.cls();
-        ctx.print(0, 0, "Hello world");
+        self.map.render(ctx);
+    }
+}
+
+impl State {
+    fn new() -> Self {
+        Self { map: Map::new() }
     }
 }
 
 fn main() -> BError {
     let ctx = BTermBuilder::simple80x50()
         .with_title("Dungeon Crawl")
+        .with_fps_cap(30.0)
         .build()?;
 
-    main_loop(ctx, State {})
+    main_loop(ctx, State::new())
 }

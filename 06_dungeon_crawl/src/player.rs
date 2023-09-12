@@ -1,3 +1,4 @@
+#![warn(clippy::all, clippy::pedantic)]
 use crate::prelude::*;
 
 pub struct Player {
